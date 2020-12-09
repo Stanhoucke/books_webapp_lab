@@ -31,5 +31,9 @@ def books():
 # PUT '/books/<id>'
 
 # DELETE
-# DELETE '/books/<id>'
+# DELETE '/books/<id>/delete'
+@books_blueprint.route('/books/<id>/delete', methods=['POST'])
+def delete_book(id):
+    book_repository.delete(id)
+    return redirect('/books')
 

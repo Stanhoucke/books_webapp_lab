@@ -1,5 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-    Content will go here
+    <h1>Book List</h1>
+    <ul>
+        {% for book in all_books %}
+            <li><b>{{ book.title }}</b></li>
+            <li>Genre: {{ book.genre }}</li>
+            <li>Publisher: {{ book.publisher }}</li>
+            <li>Written by: {{ book.author.first_name }} {{ book.author.last_name }}</li>
+
+            <div class="buttons">
+                <form class="delete-form" action="/books/{{book.id}}/delete" method="POST"> <!-- NEW -->
+                    <button class="trash-button"><i class="fa fa-trash-o fa-3x" style="color:red" aria-hidden="true"></i></button> <!-- NEW -->
+                </form>                
+            </div>
+
+        {% endfor %}
+    </ul>
 {% endblock %}
