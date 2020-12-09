@@ -8,7 +8,7 @@ def save(book):
     sql = "INSERT INTO books (title, genre, publisher, author_id) values (%s, %s, %s, %s) RETURNING *"
     values = [book.title, book.genre, book.publisher, book.author.id]
     results = run_sql(sql, values)
-    id = results [0]['id']
+    id = results[0]['id']
     book.id = id
     return book
 
